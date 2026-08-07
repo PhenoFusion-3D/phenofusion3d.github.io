@@ -6,35 +6,35 @@ import { useRef } from "react";
 
 const techStack = [
   {
-    category: "Core Application",
+    category: "Core Processing",
     items: [
-      { name: "Python", icon: "🐍", desc: "Primary language for backend processing and pipeline orchestration" },
-      { name: "NumPy / SciPy", icon: "📐", desc: "Scientific computing and numerical processing of spectral arrays" },
-      { name: "OpenCV", icon: "👁️", desc: "Computer vision, image preprocessing, and background segmentation" },
+      { name: "Python 3.10+", icon: "🐍", desc: "Primary language for the pipeline, app, and tooling (3.12 in development)" },
+      { name: "Open3D", icon: "🔷", desc: "RGBD-to-point-cloud conversion, colour ICP registration, and 3D visualisation" },
+      { name: "NumPy / OpenCV", icon: "📐", desc: "Numerical processing, image I/O, and depth handling across the pipeline" },
     ],
   },
   {
-    category: "3D Processing",
+    category: "Capture Hardware",
     items: [
-      { name: "Open3D", icon: "🔷", desc: "3D point cloud processing, visualisation, and mesh reconstruction" },
-      { name: "VTK / PyVista", icon: "🌐", desc: "High-performance 3D rendering and scientific visualisation" },
-      { name: "PCL (via Python)", icon: "☁️", desc: "Point cloud filtering, segmentation, and feature extraction" },
-    ],
-  },
-  {
-    category: "Hyperspectral Analysis",
-    items: [
-      { name: "SPy (SpectralPy)", icon: "🌈", desc: "Hyperspectral image I/O, calibration, and band manipulation" },
-      { name: "scikit-learn", icon: "🤖", desc: "Machine learning for spectral classification and trait regression" },
-      { name: "Matplotlib / Plotly", icon: "📊", desc: "Scientific plotting and interactive spectral visualisations" },
+      { name: "Intel RealSense L515", icon: "📷", desc: "LiDAR depth camera captured via pyrealsense2 with colour-aligned depth" },
+      { name: "ROS + Gantry", icon: "🤖", desc: "Twist-based velocity control drives the lab gantry during capture (rospy)" },
+      { name: "Session Metadata", icon: "🗂️", desc: "Per-capture intrinsics and frame-to-gantry-position mapping in session.json" },
     ],
   },
   {
     category: "Desktop Application",
     items: [
-      { name: "Qt / PyQt6", icon: "🪟", desc: "Cross-platform desktop GUI with native look and feel" },
-      { name: "Pandas", icon: "🐼", desc: "Structured data handling for trait tables and export pipelines" },
-      { name: "HDF5 / Zarr", icon: "💾", desc: "Efficient storage of large hyperspectral datasets" },
+      { name: "PyQt5 / pyqtgraph", icon: "🪟", desc: "Cross-platform GUI with Data Capture, Data Quality, and Reconstruction panels" },
+      { name: "Matplotlib", icon: "📊", desc: "Plots for quality metrics and diagnostics inside the app" },
+      { name: "natsort / tqdm", icon: "⏱️", desc: "Natural-order frame pairing and progress reporting for long runs" },
+    ],
+  },
+  {
+    category: "Quality & Tooling",
+    items: [
+      { name: "pytest", icon: "✅", desc: "Unit tests for loader, RGBD conversion, and ICP, plus an end-to-end smoke script" },
+      { name: "ruff", icon: "🧹", desc: "Linting to keep the codebase consistent across contributors" },
+      { name: "Install Scripts", icon: "💾", desc: "One-command installers for lab Linux (ROS) and Windows (camera-only)" },
     ],
   },
 ];
@@ -76,7 +76,7 @@ export default function TechStack() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-green-100/50 max-w-xl mx-auto text-base"
           >
-            A modern scientific Python stack powering reproducible plant phenomics research.
+            The Python stack actually powering capture, reconstruction, and quality checking.
           </motion.p>
         </div>
 
@@ -128,8 +128,9 @@ export default function TechStack() {
           <div>
             <div className="text-white font-bold text-lg">Open Science Principles</div>
             <div className="text-green-100/50 text-sm mt-1">
-              PhenoFusion3D is built on open-source foundations with clear documentation and reproducible
-              pipelines, designed for adoption and extension by the plant science community.
+              PhenoFusion3D is MPL-2.0 licensed with setup and troubleshooting docs for Ubuntu, Windows,
+              and the L515 camera, unit and smoke tests, and reproducible pipelines built for adoption
+              and extension by the plant science community.
             </div>
           </div>
         </motion.div>

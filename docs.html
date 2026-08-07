@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docs — PhenoFusion3D Setup &amp; Troubleshooting</title>
+  <meta
+    name="description"
+    content="Zero-friction setup for PhenoFusion3D on Ubuntu 20.04, Windows, and the L515 LiDAR camera — plus troubleshooting for every failure we've actually hit and fixed."
+  />
+  <style>
+    :root {
+      --primary: #2f7d32;
+      --secondary: #1b4332;
+      --accent: #95d5b2;
+      --accent-soft: #e6f4ea;
+      --bg: #f7fbf8;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --white: #ffffff;
+      --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --border: #dbe7dd;
+      --code-bg: #12291c;
+      --code-text: #c9ebd6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    header {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: var(--white);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    nav h1 { font-size: 1.5rem; letter-spacing: 0.5px; }
+    nav h1 a { color: var(--white); text-decoration: none; }
+    nav ul { list-style: none; display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    nav a { color: var(--white); text-decoration: none; font-weight: 600; }
+    nav a:hover { text-decoration: underline; }
+    main { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
+    h2 {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin: 2.5rem 0 0.8rem;
+      scroll-margin-top: 6rem;
+    }
+    main > h2:first-child { margin-top: 0; }
+    h3 { color: var(--primary); margin: 1.6rem 0 0.5rem; scroll-margin-top: 6rem; }
+    p { margin-bottom: 0.9rem; }
+    p.lead { font-size: 1.1rem; color: var(--muted); margin-bottom: 1.5rem; }
+    code.inline {
+      background: var(--accent-soft);
+      color: var(--secondary);
+      border-radius: 6px;
+      padding: 0.08rem 0.4rem;
+      font-size: 0.9em;
+    }
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      overflow-x: auto;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin: 0.8rem 0 1.2rem;
+    }
+    .note {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+      color: var(--secondary);
+    }
+    .warn {
+      background: #fdf3e3;
+      border-left: 4px solid #d97706;
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+      color: #7c4a03;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.8rem 0 1.4rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      font-size: 0.95rem;
+    }
+    th {
+      background: var(--accent-soft);
+      color: var(--secondary);
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+    }
+    td { padding: 0.6rem 0.8rem; border-top: 1px solid var(--border); vertical-align: top; }
+    .toc {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .toc ul { margin-left: 1.2rem; }
+    .toc a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .toc a:hover { text-decoration: underline; }
+    footer {
+      background: var(--secondary);
+      color: var(--white);
+      text-align: center;
+      padding: 1.2rem;
+      margin-top: 2rem;
+    }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <h1><a href="index.html">PhenoFusion3D</a></h1>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#demo">Demo</a></li>
+        <li><a href="index.html#install">Get Started</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="https://github.com/PhenoFusion-3D/PhenoFusion3D">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Setup &amp; Troubleshooting Guide</h2>
+    <p class="lead">
+      Everything on this page was written by actually setting PhenoFusion3D up
+      on blank machines — a factory-fresh Ubuntu 20.04, a WSL2 distro, and a
+      Windows 11 laptop with a discontinued L515 LiDAR camera — and recording
+      every failure and its fix.
+    </p>
+
+    <div class="toc">
+      <strong>On this page</strong>
+      <ul>
+        <li><a href="#linux">Linux setup (Ubuntu 20.04, zero-friction)</a></li>
+        <li><a href="#fresh-test">Proving it on a pristine machine</a></li>
+        <li><a href="#windows">Windows setup</a></li>
+        <li><a href="#l515">L515 LiDAR camera (end-of-life hardware)</a></li>
+        <li><a href="#troubleshooting">Troubleshooting — real failures, real fixes</a></li>
+      </ul>
+    </div>
+
+    <h2 id="linux">Linux setup — Ubuntu 20.04, zero friction</h2>
+    <p>
+      One idempotent script takes a completely blank Ubuntu 20.04 LTS install
+      (including WSL2) to a verified, working app. It needs no pre-installed
+      runtimes — not even Python.
+    </p>
+    <pre>git clone https://github.com/PhenoFusion-3D/PhenoFusion3D.git
+cd PhenoFusion3D
+chmod +x setup.sh
+./setup.sh                    # base install (GUI + reconstruction, no camera)
+./setup.sh --with-realsense   # + Intel librealsense2 SDK + pyrealsense2
+./setup.sh --l515             # + L515-compatible pyrealsense2 (&lt;2.55)
+./setup.sh --with-ros         # + ROS Noetic base for the gantry backend
+./setup.sh --verify-only      # re-run just the verification step</pre>
+    <p>What the script does, in order:</p>
+    <table>
+      <tr><th>Step</th><th>Detail</th></tr>
+      <tr><td>Python 3.10–3.12</td><td>Uses any suitable interpreter already on <code class="inline">PATH</code>; otherwise apt-installs one via the deadsnakes PPA — but only after confirming apt can actually see the package (focal is past EOL, so PPA coverage is checked, not assumed); otherwise downloads a standalone CPython 3.11 via <code class="inline">uv</code> with no sudo at all.</td></tr>
+      <tr><td>Native libraries</td><td>Installs the full Qt xcb / xkb / X11 / OpenGL / EGL runtime set that a fresh Ubuntu lacks — the libraries whose absence causes the classic <em>"Could not load the Qt platform plugin xcb"</em> crash.</td></tr>
+      <tr><td>Virtual environment</td><td>Creates <code class="inline">.venv-linux/</code> with <code class="inline">--system-site-packages</code> so a system-installed <code class="inline">rospy</code> stays importable. Reused if already valid; rebuilt if broken.</td></tr>
+      <tr><td>Project install</td><td><code class="inline">pip install -e .</code> (editable), plus optional extras per flag.</td></tr>
+      <tr><td>OpenCV/Qt conflict fix</td><td>Swaps <code class="inline">opencv-python</code> for <code class="inline">opencv-python-headless</code> — the bundled cv2 Qt plugins otherwise hijack PyQt5's platform plugin path and abort the GUI at startup.</td></tr>
+      <tr><td>Verification</td><td>Imports every dependency, spins up a headless <code class="inline">QApplication</code>, and runs an Open3D point-cloud smoke test. Ends with <strong>VERIFICATION PASSED</strong>.</td></tr>
+    </table>
+    <div class="note">
+      <strong>sudo:</strong> required only for the apt steps; the script invokes
+      it itself and passes <code class="inline">DEBIAN_FRONTEND=noninteractive</code>
+      through sudo so nothing (looking at you, tzdata) can stall a fresh
+      install waiting for keyboard input. Running as root works too.
+    </div>
+    <p>Launch after setup:</p>
+    <pre>source .venv-linux/bin/activate
+python main.py</pre>
+
+    <h2 id="fresh-test">Proving it on a pristine machine</h2>
+    <p>
+      "Works on my machine" isn't verification. The setup script is validated
+      by importing a factory-fresh Ubuntu 20.04 root filesystem as a throwaway
+      WSL distro — ships with Python 3.8 only, so it exercises the entire cold
+      path — running the script, and checking for the verification banner:
+    </p>
+    <pre># PowerShell
+mkdir C:\wsl -Force
+curl.exe -LO https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64-root.tar.xz
+wsl --import PhenoTest C:\wsl\PhenoTest .\focal-server-cloudimg-amd64-root.tar.xz --version 2
+wsl -d PhenoTest
+
+# inside the blank distro
+git clone https://github.com/PhenoFusion-3D/PhenoFusion3D.git ~/PhenoFusion3D
+cd ~/PhenoFusion3D &amp;&amp; bash setup.sh
+
+# afterwards, throw the test distro away
+wsl --unregister PhenoTest</pre>
+
+    <h2 id="windows">Windows setup</h2>
+    <p>For development and camera sanity-testing on Windows 10/11:</p>
+    <pre>git clone https://github.com/PhenoFusion-3D/PhenoFusion3D.git
+cd PhenoFusion3D
+py -3.11 -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -e ".[windows]"
+.\launch.bat</pre>
+    <p>
+      <code class="inline">launch.bat</code> exists because managed Windows machines
+      often have <code class="inline">Get-ExecutionPolicy = AllSigned</code>, which
+      refuses unsigned <code class="inline">.ps1</code> scripts. The
+      <code class="inline">.bat</code> wrapper bypasses policy for that single
+      invocation without changing any persistent machine setting.
+    </p>
+
+    <h2 id="l515">L515 LiDAR camera — end-of-life hardware</h2>
+    <p>
+      Intel discontinued the L515 in August 2021 and dropped its enumeration
+      from librealsense in releases ≥ 2.55. A default
+      <code class="inline">pip install pyrealsense2</code> today gets a version that
+      <em>physically cannot see an L515</em>, even when Windows shows the camera
+      healthy on the USB bus. Three hard constraints follow:
+    </p>
+    <table>
+      <tr><th>Constraint</th><th>Consequence</th></tr>
+      <tr><td>Last compatible SDK is 2.54.2</td><td>Install with the <code class="inline">[l515]</code> extras group, which pins <code class="inline">pyrealsense2&gt;=2.54.0,&lt;2.55</code>.</td></tr>
+      <tr><td>2.54 wheels exist only for Python ≤ 3.11</td><td>Use Python 3.10 or 3.11, not 3.12+.</td></tr>
+      <tr><td>WSL2 has no USB passthrough by default</td><td>The L515 is a Windows-native device for this project; launch from PowerShell, not WSL.</td></tr>
+    </table>
+    <pre>py -3.11 -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -e ".[windows,l515]"
+.\launch.bat</pre>
+    <p>
+      On startup <code class="inline">main.py</code> runs a self-check that detects all
+      three traps — running under WSL, missing pyrealsense2, and an SDK too new
+      for the L515 — and explains the exact fix in a dialog <em>before</em> you
+      click Capture. A healthy launch prints:
+    </p>
+    <pre>[startup] pyrealsense2: 2.54.2.5684
+[startup] RealSense devices visible: 1
+[startup]   - Intel RealSense L515 (fw 1.5.8.1, USB 3.2)</pre>
+
+    <h2 id="troubleshooting">Troubleshooting — real failures, real fixes</h2>
+    <p>Every entry below is a failure we actually hit while bringing machines up.</p>
+    <table>
+      <tr><th>Symptom</th><th>Cause &amp; fix</th></tr>
+      <tr>
+        <td><code class="inline">qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in .../cv2/qt/plugins</code>, then <em>Aborted (core dumped)</em></td>
+        <td><code class="inline">opencv-python</code> bundles its own Qt which hijacks PyQt5's plugin path. Fix: <code class="inline">pip uninstall -y opencv-python &amp;&amp; pip install opencv-python-headless</code>. setup.sh now does this automatically.</td>
+      </tr>
+      <tr>
+        <td><code class="inline">E: Unable to locate package python3.11</code> on Ubuntu 20.04</td>
+        <td>Focal is past end-of-standard-support, so PPA package availability can't be assumed. setup.sh checks <code class="inline">apt-cache</code> before installing and falls back to an existing interpreter on PATH, then to a standalone <code class="inline">uv</code>-managed CPython.</td>
+      </tr>
+      <tr>
+        <td><code class="inline">./setup.sh: Permission denied</code></td>
+        <td>The execute bit was lost (fresh clone on some filesystems, or a re-copy). <code class="inline">chmod +x setup.sh</code>, or just <code class="inline">bash setup.sh</code>.</td>
+      </tr>
+      <tr>
+        <td>Script fails with strange <code class="inline">\r</code> / "command not found" errors</td>
+        <td>Windows line endings from editing on the host. Fix: <code class="inline">sed -i 's/\r$//' setup.sh</code>.</td>
+      </tr>
+      <tr>
+        <td>apt install hangs on a timezone/keyboard prompt mid-script</td>
+        <td>sudo strips <code class="inline">DEBIAN_FRONTEND=noninteractive</code> from the environment. setup.sh passes it through sudo explicitly.</td>
+      </tr>
+      <tr>
+        <td><em>"No Intel RealSense camera was found"</em> with an L515 that Windows sees fine</td>
+        <td>pyrealsense2 ≥ 2.55 dropped L515 support. Reinstall with <code class="inline">pip install -e ".[windows,l515]"</code> on Python 3.10/3.11. The startup self-check diagnoses this automatically.</td>
+      </tr>
+      <tr>
+        <td>Camera works in PowerShell but not from WSL</td>
+        <td>WSL2 does not pass USB through by default. Launch from PowerShell — the app detects WSL and warns before capture. (usbipd-win passthrough was evaluated and rejected: real overhead for a 5&nbsp;Gbps device with a clean native path available.)</td>
+      </tr>
+      <tr>
+        <td><code class="inline">OleInitialize() failed ... RPC_E_CHANGED_MODE</code> at startup on Windows</td>
+        <td>COM apartment ordering: Qt wants STA, librealsense's Media Foundation backend inits MTA. The app creates <code class="inline">QApplication</code> first and runs the camera self-check second — if you're modifying <code class="inline">main.py</code>, keep that order.</td>
+      </tr>
+      <tr>
+        <td><code class="inline">rospy</code> import fails inside the venv on the lab rig</td>
+        <td>ROS wasn't sourced when the venv was created. <code class="inline">source /opt/ros/noetic/setup.bash</code>, then re-run <code class="inline">./setup.sh --with-ros</code> — the venv uses <code class="inline">--system-site-packages</code> precisely so it can see the system rospy.</td>
+      </tr>
+      <tr>
+        <td>AppImage crashes with the xcb plugin error on a fresh host</td>
+        <td>The host lacks X11 client libraries (host requirement, not a build bug). Install the same Qt/X11 set that setup.sh installs — see <code class="inline">install/README.md</code> for the one-line apt command.</td>
+      </tr>
+    </table>
+
+    <div class="warn">
+      <strong>Verify any install, any platform:</strong> every setup path ends
+      with the same check — all imports, a headless Qt
+      <code class="inline">QApplication</code>, and an Open3D smoke test. On Linux:
+      <code class="inline">./setup.sh --verify-only</code>. Look for
+      <strong>VERIFICATION PASSED</strong>.
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 PhenoFusion3D | APPN ANU | <a href="https://github.com/PhenoFusion-3D/PhenoFusion3D">Source on GitHub</a></p>
+  </footer>
+</body>
+</html>

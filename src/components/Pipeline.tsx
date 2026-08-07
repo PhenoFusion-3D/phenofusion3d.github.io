@@ -9,49 +9,49 @@ const steps = [
   {
     step: "01",
     icon: Upload,
-    title: "Load Plant Scans",
+    title: "Capture RGB-D Sequence",
     description:
-      "Import raw hyperspectral and 3D lidar/structured-light scan data from supported sensor formats. Supports batch loading of multiple plant specimens.",
+      "Drive the gantry over the plant via ROS on the lab machine, or capture directly from a RealSense L515 on Windows. Frames, intrinsics, and gantry positions are saved per session.",
     color: "green",
   },
   {
     step: "02",
     icon: Zap,
-    title: "Calibrate & Preprocess",
+    title: "Load & Organise Data",
     description:
-      "Apply white reference and dark current calibration workflows. Automated background removal isolates plant structure for clean analysis.",
+      "Pair RGB and depth PNGs from stakeholder or ICL-NUIM layouts with the loader, parse camera intrinsics, and reorganise raw team drops into a standard layout with CLI scripts.",
     color: "lime",
   },
   {
     step: "03",
     icon: Scan,
-    title: "3D Reconstruction",
+    title: "Run Quality Diagnostics",
     description:
-      "Generate dense 3D point clouds representing plant geometry. Align and fuse multi-view scans into a unified plant model.",
+      "Quick Check or Full Report computes depth validity, median depth, point count, ICP fitness, inlier RMSE, and rotation per pair, then issues a PASS/WARN/FAIL verdict.",
     color: "emerald",
   },
   {
     step: "04",
     icon: Layers,
-    title: "Spectral Mapping",
+    title: "Generate Point Clouds",
     description:
-      "Project hyperspectral data onto the 3D model. Compute spectral indices (NDVI, chlorophyll, water content) per point in the cloud.",
+      "Convert each RGB + depth pair into a coloured Open3D point cloud, with downsampling, outlier removal, and normal estimation applied before alignment.",
     color: "teal",
   },
   {
     step: "05",
     icon: BarChart2,
-    title: "Trait Extraction",
+    title: "Align & Merge with ICP",
     description:
-      "Run automated trait extraction pipelines to quantify structural features (height, branching, leaf angle) and spectral phenotypes.",
+      "Sequentially register frames using colour ICP with a point-to-plane fallback. Frames below the fitness or RMSE thresholds are rejected; a live merge snapshot updates each frame.",
     color: "green",
   },
   {
     step: "06",
     icon: Download,
-    title: "Export & Report",
+    title: "Export Model & Metrics",
     description:
-      "Generate structured output tables, visualisation plots, and reproducible pipeline reports ready for downstream analysis and publication.",
+      "Write the merged cloud to PLY, save per-frame fitness and RMSE metrics to CSV, and keep quality reports (CSV + TXT) next to the dataset for reproducibility.",
     color: "lime",
   },
 ];
@@ -89,9 +89,9 @@ export default function Pipeline() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl font-black text-white mb-4"
           >
-            From Raw Scan to{" "}
+            From Camera Capture to{" "}
             <span className="bg-gradient-to-r from-green-400 to-lime-400 bg-clip-text text-transparent">
-              Actionable Insights
+              Merged 3D Model
             </span>
           </motion.h2>
           <motion.p
@@ -100,7 +100,7 @@ export default function Pipeline() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-green-100/50 max-w-xl mx-auto text-base"
           >
-            A reproducible, end-to-end pipeline for plant phenomics research.
+            The reproducible, end-to-end RGB-D reconstruction pipeline as implemented.
           </motion.p>
         </div>
 
@@ -159,16 +159,16 @@ export default function Pipeline() {
           </div>
           <div className="space-y-1 text-xs">
             {[
-              { text: "$ phenofusion3d run --input scans/wheat_001/ --calibrate --extract-traits", color: "text-green-300" },
-              { text: "[INFO] Loading hyperspectral scan: wheat_001_hyperspectral.hdr", color: "text-green-100/60" },
-              { text: "[INFO] Applying white reference calibration... ✓", color: "text-green-100/60" },
-              { text: "[INFO] Background removal (Otsu threshold)... ✓", color: "text-green-100/60" },
-              { text: "[INFO] 3D point cloud reconstruction (156,892 pts)... ✓", color: "text-green-100/60" },
-              { text: "[INFO] Spectral mapping: 421 bands projected... ✓", color: "text-green-100/60" },
-              { text: "[INFO] Trait extraction pipeline running...", color: "text-lime-400" },
-              { text: "  → NDVI mean: 0.724  |  Chlorophyll: 42.3 µg/cm²  |  LAI: 3.81", color: "text-lime-300" },
-              { text: "  → Plant Height: 48.2cm  |  Branch Count: 7  |  Leaf Area: 234cm²", color: "text-lime-300" },
-              { text: "[SUCCESS] Report exported: wheat_001_report.csv, wheat_001_plots.pdf", color: "text-emerald-400" },
+              { text: "$ python main.py  # Data Capture → Data Quality → Reconstruction", color: "text-green-300" },
+              { text: "[INFO] Loaded 142 RGB-D pairs: data/captures/20260406152752/", color: "text-green-100/60" },
+              { text: "[INFO] Intrinsics: kdc_intrinsics.txt (640x480)... ✓", color: "text-green-100/60" },
+              { text: "[INFO] Quality check: depth validity 68.4% | median depth 0.61 m... ✓", color: "text-green-100/60" },
+              { text: "[INFO] rgbd2pcd: frame 0 → 156,892 pts (voxel downsample, outliers removed)... ✓", color: "text-green-100/60" },
+              { text: "[INFO] Colour ICP frame 1/141: fitness 0.87 | inlier RMSE 0.0041 m... ✓", color: "text-green-100/60" },
+              { text: "[WARN] Frame 57 REJECTED: fitness 0.24 < min_fitness 0.30", color: "text-lime-400" },
+              { text: "  → Merged: 140/141 frames  |  mean fitness 0.83  |  mean RMSE 0.0046 m", color: "text-lime-300" },
+              { text: "  → Live snapshot updated: merge_pcd_live.ply", color: "text-lime-300" },
+              { text: "[SUCCESS] Exported: merge_pcd_live.ply, quality_report.csv, quality_report.txt", color: "text-emerald-400" },
             ].map((line, i) => (
               <motion.div
                 key={i}

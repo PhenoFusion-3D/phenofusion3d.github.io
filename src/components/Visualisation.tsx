@@ -5,15 +5,15 @@ import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const spectralBands = [
-  { name: "RGB", range: "400–700nm", color: "#86efac", description: "Visible light composite" },
-  { name: "NIR", range: "700–900nm", color: "#4ade80", description: "Near-infrared reflectance" },
-  { name: "SWIR", range: "900–1700nm", color: "#22c55e", description: "Short-wave infrared" },
-  { name: "NDVI", range: "Derived Index", color: "#a3e635", description: "Vegetation index" },
-  { name: "ChlIdx", range: "Derived Index", color: "#84cc16", description: "Chlorophyll content" },
-  { name: "Water", range: "Derived Index", color: "#65a30d", description: "Water content" },
+  { name: "RGB", range: "Colour stream", color: "#86efac", description: "Colour frames from the L515" },
+  { name: "Depth", range: "LiDAR stream", color: "#4ade80", description: "Aligned per-pixel depth (mm)" },
+  { name: "Cloud", range: "rgbd2pcd", color: "#22c55e", description: "Coloured Open3D point cloud" },
+  { name: "Fitness", range: "ICP metric", color: "#a3e635", description: "Per-pair alignment overlap" },
+  { name: "RMSE", range: "ICP metric", color: "#84cc16", description: "Inlier registration error (m)" },
+  { name: "Merge", range: "Live snapshot", color: "#65a30d", description: "merge_pcd_live.ply output" },
 ];
 
-const viewModes = ["3D Point Cloud", "Spectral Overlay", "Trait Map", "Time Series"];
+const viewModes = ["Single Frame", "Pair Alignment", "Live Merge", "Quality Map"];
 
 export default function Visualisation() {
   const ref = useRef(null);
@@ -49,9 +49,9 @@ export default function Visualisation() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl font-black text-white mb-4"
           >
-            See Plants in a New{" "}
+            Watch the Model{" "}
             <span className="bg-gradient-to-r from-green-400 to-lime-400 bg-clip-text text-transparent">
-              Dimension
+              Build Frame by Frame
             </span>
           </motion.h2>
           <motion.p
@@ -60,7 +60,7 @@ export default function Visualisation() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-green-100/50 max-w-xl mx-auto text-base"
           >
-            Fuse 3D geometry with spectral imaging to reveal invisible plant traits.
+            Inspect frames, alignments, and the growing merged cloud as reconstruction runs.
           </motion.p>
         </div>
 
@@ -90,7 +90,7 @@ export default function Visualisation() {
             </div>
             <div className="flex items-center gap-2 text-xs text-green-400/60">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              Live Preview — Wheat_Scan_001
+              Live Merge — captures/20260406152752
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export default function Visualisation() {
             {/* Band selector sidebar */}
             <div className="lg:col-span-1 border-b lg:border-b-0 lg:border-r border-green-900/30 bg-[#080f0b] p-4">
               <div className="text-[10px] text-green-500/60 uppercase tracking-widest mb-3 font-semibold">
-                Spectral Bands
+                Data Layers
               </div>
               <div className="space-y-1.5">
                 {spectralBands.map((band, i) => (
@@ -130,7 +130,7 @@ export default function Visualisation() {
 
               {/* Band info */}
               <div className="mt-4 p-3 rounded-xl bg-green-500/5 border border-green-500/15">
-                <div className="text-[10px] text-green-400/60 uppercase tracking-wider mb-1">Active Band</div>
+                <div className="text-[10px] text-green-400/60 uppercase tracking-wider mb-1">Active Layer</div>
                 <div className="text-green-300 text-sm font-bold">{spectralBands[activeBand].name}</div>
                 <div className="text-green-100/40 text-xs mt-1">{spectralBands[activeBand].description}</div>
               </div>
@@ -199,7 +199,7 @@ export default function Visualisation() {
                   <span className="text-[10px] text-green-100/40 font-mono">High</span>
                 </div>
                 <div className="text-center text-[10px] text-green-500/40 mt-1 font-mono">
-                  {spectralBands[activeBand].name} Index
+                  {spectralBands[activeBand].name} Layer
                 </div>
               </div>
             </div>
@@ -209,9 +209,9 @@ export default function Visualisation() {
         {/* Feature callouts */}
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {[
-            { title: "360° Rotation", desc: "Freely rotate and zoom around the full 3D plant model" },
-            { title: "Per-Point Spectra", desc: "Click any point to inspect its full spectral signature" },
-            { title: "Time-Series Playback", desc: "Replay plant growth across multiple scan timepoints" },
+            { title: "Open3D Viewer", desc: "Rotate, zoom, and inspect the merged coloured point cloud" },
+            { title: "Live Merge Snapshot", desc: "merge_pcd_live.ply is rewritten after every accepted frame" },
+            { title: "Quality Reports", desc: "Per-pair metrics and verdicts saved as CSV and TXT beside the data" },
           ].map((item, i) => (
             <motion.div
               key={item.title}

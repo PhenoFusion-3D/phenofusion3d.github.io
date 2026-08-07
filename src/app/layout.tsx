@@ -5,21 +5,23 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PhenoFusion3D — Integrated 3D Hyperspectral Plant Analytics",
+  title: "PhenoFusion3D — RGB-D 3D Reconstruction for Plant Phenotyping",
   description:
-    "PhenoFusion3D is an integrated 3D–hyperspectral analytics tool that extracts structural and spectral traits from plant scans, developed at the ANU node of the Australian Plant Phenomics Network.",
+    "PhenoFusion3D turns paired RGB and depth images into coloured point clouds, aligns frames with ICP, and merges them into 3D plant models, developed at the ANU node of the Australian Plant Phenomics Network.",
   keywords: [
     "plant phenomics",
-    "3D hyperspectral",
-    "plant science",
+    "RGB-D",
+    "3D reconstruction",
+    "point cloud",
+    "ICP",
+    "Open3D",
+    "RealSense L515",
     "APPN",
     "ANU",
-    "plant breeding",
-    "trait extraction",
   ],
   openGraph: {
     title: "PhenoFusion3D",
-    description: "Integrated 3D–Hyperspectral Plant Analytics",
+    description: "RGB-D 3D Reconstruction for Plant Phenotyping",
     type: "website",
   },
 };

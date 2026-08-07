@@ -14,55 +14,55 @@ import {
 
 const features = [
   {
-    icon: Cuboid,
-    title: "Interactive 3D Visualisation",
+    icon: ScanLine,
+    title: "In-App RGB-D Data Capture",
     description:
-      "Explore plant geometry with full 3D point cloud rendering. Overlay spectral bands and indices directly onto plant structure for intuitive spatial analysis.",
+      "Drive a full capture without leaving the app. Auto backend picks ROS + gantry on the lab machine or RealSense-only on Windows, with UI-tunable velocity, end position, and FPS.",
     gradient: "from-green-500/20 to-emerald-500/10",
     border: "border-green-500/30",
     iconColor: "text-green-400",
   },
   {
-    icon: ScanLine,
-    title: "Hyperspectral Band Mapping",
+    icon: Cuboid,
+    title: "3D Reconstruction Pipeline",
     description:
-      "Process 400+ spectral bands with automated white/dark calibration. Compute NDVI, chlorophyll, moisture, and custom spectral indices from raw scan data.",
+      "Convert paired RGB + depth images into coloured Open3D point clouds, align successive frames with colour ICP (point-to-plane fallback), and merge them into a single model.",
     gradient: "from-lime-500/20 to-green-500/10",
     border: "border-lime-500/30",
     iconColor: "text-lime-400",
   },
   {
     icon: Microscope,
-    title: "Automated Trait Extraction",
+    title: "Data Quality Diagnostics",
     description:
-      "Run end-to-end trait extraction pipelines — from raw scan ingestion through background removal to structured, quantitative phenotypic output.",
+      "Quick Check (~15 random pairs) or Full Report over every consecutive pair — depth validity, median depth, ICP fitness, inlier RMSE, and rotation, with PASS/WARN/FAIL verdicts.",
     gradient: "from-emerald-500/20 to-teal-500/10",
     border: "border-emerald-500/30",
     iconColor: "text-emerald-400",
   },
   {
     icon: BarChart3,
-    title: "Phenotype Correlation Engine",
+    title: "Automatic Frame Rejection",
     description:
-      "Correlate extracted spectral and structural traits with agronomic features or breeding targets. Identify meaningful genotype–environment interactions.",
+      "The reconstructor enforces min-fitness and max-RMSE thresholds during merging: frames that miss either bar are marked REJECTED and never pollute the merged cloud.",
     gradient: "from-teal-500/20 to-cyan-500/10",
     border: "border-teal-500/30",
     iconColor: "text-teal-400",
   },
   {
     icon: Sliders,
-    title: "Calibration Workflows",
+    title: "Dataset Tooling & Loaders",
     description:
-      "Built-in white reference and dark current calibration pipelines ensure measurement accuracy and reproducibility across different scanning conditions.",
+      "Loaders handle stakeholder rgb_*/depth_* and ICL-NUIM numbered layouts, with intrinsics parsing, subsampling, and CLI scripts to reorganise raw drops into a standard layout.",
     gradient: "from-green-600/20 to-green-400/10",
     border: "border-green-600/30",
     iconColor: "text-green-300",
   },
   {
     icon: Download,
-    title: "Exportable Research Outputs",
+    title: "Exports, Tests & Installers",
     description:
-      "Generate publication-ready tables, plots, and reports. Export processed data in standard formats compatible with common research and breeding workflows.",
+      "Live merge snapshots and PLY export, per-frame metrics to CSV, unit + smoke tests via pytest, and one-command installers for lab Linux (ROS) and Windows (camera-only).",
     gradient: "from-lime-600/20 to-lime-400/10",
     border: "border-lime-600/30",
     iconColor: "text-lime-300",
@@ -103,7 +103,7 @@ export default function Features() {
           >
             Everything You Need for{" "}
             <span className="bg-gradient-to-r from-green-400 to-lime-400 bg-clip-text text-transparent">
-              Plant Phenomics
+              3D Plant Reconstruction
             </span>
           </motion.h2>
           <motion.p
@@ -112,7 +112,7 @@ export default function Features() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-green-100/50 max-w-xl mx-auto text-base"
           >
-            A complete desktop analytics toolkit built for plant scientists and breeders.
+            A capture-to-model desktop toolkit built and tested for plant phenotyping workflows.
           </motion.p>
         </div>
 

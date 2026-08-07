@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { ArrowDown, Scan, Layers, FlaskConical } from "lucide-react";
 
 const floatingBadges = [
-  { icon: Scan, label: "3D Point Cloud", color: "from-green-500/20 to-emerald-500/10", border: "border-green-500/30", x: "-left-8 top-24", delay: 0 },
-  { icon: Layers, label: "Hyperspectral", color: "from-lime-500/20 to-green-500/10", border: "border-lime-500/30", x: "-right-8 top-40", delay: 0.3 },
-  { icon: FlaskConical, label: "Trait Extraction", color: "from-emerald-500/20 to-teal-500/10", border: "border-emerald-500/30", x: "-left-4 bottom-24", delay: 0.6 },
+  { icon: Scan, label: "RGB-D Capture", color: "from-green-500/20 to-emerald-500/10", border: "border-green-500/30", x: "-left-8 top-24", delay: 0 },
+  { icon: Layers, label: "ICP Alignment", color: "from-lime-500/20 to-green-500/10", border: "border-lime-500/30", x: "-right-8 top-40", delay: 0.3 },
+  { icon: FlaskConical, label: "Quality Diagnostics", color: "from-emerald-500/20 to-teal-500/10", border: "border-emerald-500/30", x: "-left-4 bottom-24", delay: 0.6 },
 ];
 
 export default function Hero() {
@@ -85,7 +85,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.35 }}
           className="text-2xl md:text-3xl font-light text-green-300/80 mb-4 tracking-wide"
         >
-          Integrated 3D–Hyperspectral Plant Analytics
+          RGB-D 3D Reconstruction for Plant Phenotyping
         </motion.p>
 
         <motion.p
@@ -94,9 +94,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-base md:text-lg text-green-100/50 max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          Extract structural and spectral traits from plant scans. Visualise plants in 3D,
-          derive key hyperspectral indices, and correlate traits with phenotypes to
-          accelerate plant science and breeding decisions.
+          Capture paired colour and depth images with a RealSense L515 on a motorised
+          gantry, convert them into coloured point clouds, align successive frames with
+          ICP, and merge them into a single 3D plant model — all from one desktop app.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -149,15 +149,15 @@ export default function Hero() {
               <div className="w-3 h-3 rounded-full bg-red-500/60" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
               <div className="w-3 h-3 rounded-full bg-green-500/60" />
-              <div className="ml-3 text-xs text-green-400/60 font-mono">PhenoFusion3D — Plant Scan Analysis</div>
+              <div className="ml-3 text-xs text-green-400/60 font-mono">PhenoFusion3D — RGB-D Reconstruction</div>
             </div>
 
             {/* Dashboard content */}
             <div className="grid grid-cols-3 gap-0 h-64 md:h-80">
               {/* Sidebar */}
               <div className="border-r border-green-900/30 p-3 flex flex-col gap-2 bg-[#080f0b]">
-                <div className="text-[10px] text-green-500/60 uppercase tracking-widest mb-1 font-semibold">Plant Scans</div>
-                {["Wheat_Scan_001", "Barley_Phenotype_07", "Canola_Trial_B", "Sorghum_Row_12"].map((name, i) => (
+                <div className="text-[10px] text-green-500/60 uppercase tracking-widest mb-1 font-semibold">Captures</div>
+                {["20260406152752", "20260406152813", "20260406154616", "icl_nuim_traj1"].map((name, i) => (
                   <motion.div
                     key={name}
                     initial={{ opacity: 0, x: -10 }}
@@ -213,9 +213,9 @@ export default function Hero() {
                   {/* Metadata overlay */}
                   <div className="absolute bottom-3 left-3 right-3 flex gap-2">
                     {[
-                      { label: "NDVI", value: "0.72", color: "text-lime-400" },
-                      { label: "Chlorophyll", value: "42.3", color: "text-green-400" },
-                      { label: "LAI", value: "3.8", color: "text-emerald-400" },
+                      { label: "ICP Fitness", value: "0.87", color: "text-lime-400" },
+                      { label: "RMSE (m)", value: "0.004", color: "text-green-400" },
+                      { label: "Points", value: "156k", color: "text-emerald-400" },
                     ].map((m) => (
                       <div key={m.label} className="flex-1 bg-black/40 backdrop-blur-sm rounded-lg px-2 py-1.5 border border-green-900/40">
                         <div className="text-[9px] text-green-100/50 uppercase tracking-wider">{m.label}</div>

@@ -5,10 +5,10 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { value: "400+", label: "Spectral Bands Processed", color: "text-green-400" },
-  { value: "3D", label: "Point Cloud Visualisation", color: "text-lime-400" },
-  { value: "10x", label: "Faster Trait Analysis", color: "text-emerald-400" },
-  { value: "100%", label: "Non-Destructive Scanning", color: "text-teal-400" },
+  { value: "RGB-D", label: "In-App Gantry & RealSense Capture", color: "text-green-400" },
+  { value: "ICP", label: "Colour ICP Frame Alignment & Merge", color: "text-lime-400" },
+  { value: "6+", label: "Per-Pair Quality Metrics Reported", color: "text-emerald-400" },
+  { value: "2 OS", label: "Lab Linux + ROS and Windows Installs", color: "text-teal-400" },
 ];
 
 export default function About() {
@@ -52,11 +52,11 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-green-100/60 leading-relaxed mb-6 text-base"
             >
-              PhenoFusion 3D integrates cutting-edge 3D scanning with hyperspectral imaging
-              to provide an unprecedented view into plant health, growth, and genetic traits.
-              Developed at the ANU node of the Australian Plant Phenomics Network (APPN), it
-              enables researchers to measure plant performance efficiently, objectively, and
-              non-destructively over time.
+              PhenoFusion3D is a Python toolkit for RGB-D–based 3D plant reconstruction,
+              developed at the ANU node of the Australian Plant Phenomics Network (APPN).
+              It turns paired colour and depth images from an Intel RealSense L515 into
+              coloured point clouds, aligns successive frames with ICP, and merges them
+              into a single 3D plant model — efficiently, objectively, and non-destructively.
             </motion.p>
 
             <motion.p
@@ -65,9 +65,10 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="text-green-100/60 leading-relaxed mb-8 text-base"
             >
-              By correlating structural geometry with spectral data, PhenoFusion3D accelerates
-              the development of improved crops for a changing climate — supporting food
-              security and more productive, sustainable farming systems.
+              The desktop app drives the whole workflow: capturing sequences on the lab
+              gantry (ROS) or directly from a RealSense camera on Windows, running depth
+              and ICP quality diagnostics with PASS/WARN/FAIL verdicts, and rejecting bad
+              frames automatically so they never pollute the merged cloud.
             </motion.p>
 
             <motion.div
@@ -76,7 +77,7 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="flex flex-wrap gap-3"
             >
-              {["Food Security", "Sustainable Farming", "Crop Development", "Climate Resilience"].map((tag) => (
+              {["3D Reconstruction", "RGB-D Imaging", "Plant Phenotyping", "Open Source (MPL-2.0)"].map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1.5 rounded-full border border-green-500/25 bg-green-500/10 text-green-300 text-sm font-medium"
