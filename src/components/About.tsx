@@ -52,11 +52,11 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-green-100/60 leading-relaxed mb-6 text-base"
             >
-              PhenoFusion3D is a Python toolkit for RGB-D–based 3D plant reconstruction,
-              developed at the ANU node of the Australian Plant Phenomics Network (APPN).
-              It turns paired colour and depth images from an Intel RealSense L515 into
-              coloured point clouds, aligns successive frames with ICP, and merges them
-              into a single 3D plant model — efficiently, objectively, and non-destructively.
+              PhenoFusion 3D integrates cutting-edge 3D scanning with hyperspectral imaging
+              to provide an unprecedented view into plant health, growth, and genetic traits.
+              Developed at the ANU node of the Australian Plant Phenomics Network (APPN), it
+              enables researchers to measure plant performance efficiently, objectively, and
+              non-destructively over time.
             </motion.p>
 
             <motion.p

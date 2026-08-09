@@ -22,7 +22,7 @@ const projectLeadership = [
 ];
 
 const studentMembers = [
-  { name: "Adithya Rama",   role: "Student Team Lead", email: "Adithya.Rama@anu.edu.au" },
+  { name: "Adithya Rama",   role: "Student Team Lead at ANU", email: "Adithya.Rama@anu.edu.au" },
   { name: "Tanisha Sharma", role: "Student at ANU", email: "Tanisha.Sharma@anu.edu.au" },
   { name: "Howard Zhang",   role: "Student at ANU", email: "u7877905@anu.edu.au" },
   { name: "Tianyu Xu",      role: "Student at ANU", email: "Tianyu.Xu@anu.edu.au" },
