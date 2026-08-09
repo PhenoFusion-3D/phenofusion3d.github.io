@@ -6,10 +6,10 @@ import { useRef } from "react";
 import {
   Cuboid,
   Microscope,
-  BarChart3,
   Download,
   ScanLine,
-  Sliders,
+  Scissors,
+  Ruler,
 } from "lucide-react";
 
 const features = [
@@ -41,28 +41,28 @@ const features = [
     iconColor: "text-emerald-400",
   },
   {
-    icon: BarChart3,
-    title: "Automatic Frame Rejection",
+    icon: Scissors,
+    title: "Point-Cloud Cleanup",
     description:
-      "The reconstructor enforces min-fitness and max-RMSE thresholds during merging: frames that miss either bar are marked REJECTED and never pollute the merged cloud.",
+      "Clean large reconstructed PLY files with streaming voxel downsampling, HSV green filtering, largest-cluster isolation, statistical cleanup, and radius outlier removal.",
     gradient: "from-teal-500/20 to-cyan-500/10",
     border: "border-teal-500/30",
     iconColor: "text-teal-400",
   },
   {
-    icon: Sliders,
-    title: "Dataset Tooling & Loaders",
+    icon: Ruler,
+    title: "3D Trait Extraction",
     description:
-      "Loaders handle stakeholder rgb_*/depth_* and ICL-NUIM numbered layouts, with intrinsics parsing, subsampling, and CLI scripts to reorganise raw drops into a standard layout.",
+      "Export bounding-box dimensions, convex-hull area and volume, max height, top-percentile heights, convex-hull PLY, JSON, and CSV outputs from cleaned plant point clouds.",
     gradient: "from-green-600/20 to-green-400/10",
     border: "border-green-600/30",
     iconColor: "text-green-300",
   },
   {
     icon: Download,
-    title: "Exports, Tests & Installers",
+    title: "Batch Processing, Tests & Installers",
     description:
-      "Live merge snapshots and PLY export, per-frame metrics to CSV, unit + smoke tests via pytest, and one-command installers for lab Linux (ROS) and Windows (camera-only).",
+      "Batch cleanup/trait scripts, live merge snapshots, per-frame metrics, unit + smoke tests, CI/CD, and one-command installers for lab Linux and Windows.",
     gradient: "from-lime-600/20 to-lime-400/10",
     border: "border-lime-600/30",
     iconColor: "text-lime-300",

@@ -106,10 +106,10 @@ export default function Organisation() {
             <h3 className="text-white text-2xl font-bold mb-4">Delivered So Far</h3>
             <ul className="space-y-3">
               {[
-                "A desktop app driving capture, quality checking, and reconstruction end-to-end",
+                "A desktop app driving capture, quality checking, reconstruction, cleanup, and trait extraction",
                 "RGB-D capture on the lab gantry (ROS) and directly from RealSense on Windows",
                 "ICP-based reconstruction with automatic rejection of low-quality frames",
-                "Quality reports, PLY / CSV exports, tests, installers, and setup documentation",
+                "Quality reports, cleaned PLY outputs, trait JSON/CSV exports, tests, installers, and setup documentation",
               ].map((goal, i) => (
                 <motion.li
                   key={i}

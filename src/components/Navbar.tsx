@@ -9,6 +9,7 @@ const navLinks = [
   { href: "#features", label: "Features" },
   { href: "#pipeline", label: "Pipeline" },
   { href: "#visualisation", label: "Visualisation" },
+  { href: "#results", label: "Results" },
   { href: "#tech", label: "Technology" },
   { href: "#organisation", label: "Organisation" },
   { href: "#team", label: "Team" },
@@ -66,10 +67,10 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="#results"
               className="ml-3 px-4 py-1.5 bg-gradient-to-r from-green-500 to-lime-500 text-black text-sm font-semibold rounded-full hover:shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-200"
             >
-              Get Access
+              View Results
             </a>
           </div>
 
@@ -77,6 +78,8 @@ export default function Navbar() {
           <button
             className="md:hidden p-2 text-green-300 hover:bg-green-900/20 rounded-lg transition"
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -104,11 +107,11 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="#results"
               onClick={() => setMenuOpen(false)}
               className="mt-2 px-4 py-2 bg-gradient-to-r from-green-500 to-lime-500 text-black text-sm font-semibold rounded-full text-center hover:shadow-lg hover:shadow-green-500/30 transition"
             >
-              Get Access
+              View Results
             </a>
           </motion.div>
         )}

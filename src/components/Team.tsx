@@ -3,15 +3,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
 import { Mail } from "lucide-react";
 
 const teamLead = {
   name: "Saswat Panda",
-  role: "Team Lead",
+  role: "Project Lead (APPN)",
   email: "Saswat.panda@anu.edu.au",
-  avatar: "https://avatars.githubusercontent.com/u/45821961?v=4",
-  bio: "Saswat Panda leads the PhenoFusion3D project at APPN ANU, guiding the overall project direction and supporting the team's technical and research goals.",
+  bio: "Saswat Panda provides APPN project direction, stakeholder guidance, and technical support for PhenoFusion3D.",
 };
 
 const projectLeadership = [
@@ -24,7 +22,7 @@ const projectLeadership = [
 ];
 
 const studentMembers = [
-  { name: "Adithya Rama",   role: "Student at ANU", email: "Adithya.Rama@anu.edu.au" },
+  { name: "Adithya Rama",   role: "Student Team Lead", email: "Adithya.Rama@anu.edu.au" },
   { name: "Tanisha Sharma", role: "Student at ANU", email: "Tanisha.Sharma@anu.edu.au" },
   { name: "Howard Zhang",   role: "Student at ANU", email: "u7877905@anu.edu.au" },
   { name: "Tianyu Xu",      role: "Student at ANU", email: "Tianyu.Xu@anu.edu.au" },
@@ -92,15 +90,8 @@ export default function Team() {
         >
           {/* Avatar */}
           <div className="flex-shrink-0 relative">
-            <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-green-500/40 shadow-xl shadow-green-950/50">
-              <Image
-                src={teamLead.avatar}
-                alt={teamLead.name}
-                width={112}
-                height={112}
-                className="object-cover w-full h-full"
-                unoptimized
-              />
+            <div className="flex h-28 w-28 items-center justify-center rounded-full border-4 border-green-500/40 bg-gradient-to-br from-green-500/25 to-lime-500/10 shadow-xl shadow-green-950/50">
+              <span className="text-2xl font-black text-green-200">SP</span>
             </div>
             <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-gradient-to-br from-green-400 to-lime-500 border-2 border-[#0a1510] flex items-center justify-center">
               <span className="text-[10px]">⭐</span>

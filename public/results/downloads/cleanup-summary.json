@@ -1,0 +1,11 @@
+{
+  "input_ply": "data\\main\\test_plant_20230809133659\\merge_simple_full\\merge_pcd_cam0.ply",
+  "output_ply": "data\\main\\test_plant_20230809133659\\post_cleanup\\cleaned_plant.ply",
+  "summary_json": "data\\main\\test_plant_20230809133659\\post_cleanup\\cleanup_summary.json",
+  "input_points": 103615118,
+  "downsampled_points": 2381707,
+  "green_points": 75791785,
+  "clustered_points": 2381707,
+  "cleaned_points": 2381707,
+  "note": "Streaming cleanup used HSV green filtering, voxel downsampling, and optional coarse largest-component filtering."
+}

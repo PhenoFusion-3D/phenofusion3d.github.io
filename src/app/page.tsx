@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Features from "@/components/Features";
 import Pipeline from "@/components/Pipeline";
 import Visualisation from "@/components/Visualisation";
+import Results from "@/components/Results";
 import TechStack from "@/components/TechStack";
 import Organisation from "@/components/Organisation";
 import Team from "@/components/Team";
@@ -18,6 +19,7 @@ export default function Home() {
       <Features />
       <Pipeline />
       <Visualisation />
+      <Results />
       <TechStack />
       <Organisation />
       <Team />

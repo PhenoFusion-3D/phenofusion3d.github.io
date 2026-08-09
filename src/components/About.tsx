@@ -7,8 +7,8 @@ import { useRef } from "react";
 const stats = [
   { value: "RGB-D", label: "In-App Gantry & RealSense Capture", color: "text-green-400" },
   { value: "ICP", label: "Colour ICP Frame Alignment & Merge", color: "text-lime-400" },
-  { value: "6+", label: "Per-Pair Quality Metrics Reported", color: "text-emerald-400" },
-  { value: "2 OS", label: "Lab Linux + ROS and Windows Installs", color: "text-teal-400" },
+  { value: "3D", label: "Trait Extraction: Hull Area, Volume & Height", color: "text-emerald-400" },
+  { value: "2.38M", label: "Points Preserved After Plant-Focused Cleanup", color: "text-teal-400" },
 ];
 
 export default function About() {
@@ -65,10 +65,9 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="text-green-100/60 leading-relaxed mb-8 text-base"
             >
-              The desktop app drives the whole workflow: capturing sequences on the lab
-              gantry (ROS) or directly from a RealSense camera on Windows, running depth
-              and ICP quality diagnostics with PASS/WARN/FAIL verdicts, and rejecting bad
-              frames automatically so they never pollute the merged cloud.
+              The desktop app now drives capture, quality checking, reconstruction, post-processing,
+              and trait extraction. It can clean large PLY files, isolate plant-like green
+              regions, segment individual plants, and export 3D traits to JSON/CSV for validation.
             </motion.p>
 
             <motion.div
@@ -77,7 +76,7 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="flex flex-wrap gap-3"
             >
-              {["3D Reconstruction", "RGB-D Imaging", "Plant Phenotyping", "Open Source (MPL-2.0)"].map((tag) => (
+              {["3D Reconstruction", "RGB-D Imaging", "Plant Phenotyping", "Trait Validation"].map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1.5 rounded-full border border-green-500/25 bg-green-500/10 text-green-300 text-sm font-medium"
