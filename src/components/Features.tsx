@@ -6,63 +6,63 @@ import { useRef } from "react";
 import {
   Cuboid,
   Microscope,
-  BarChart3,
   Download,
   ScanLine,
-  Sliders,
+  Scissors,
+  Ruler,
 } from "lucide-react";
 
 const features = [
   {
-    icon: Cuboid,
-    title: "Interactive 3D Visualisation",
+    icon: ScanLine,
+    title: "In-App RGB-D Data Capture",
     description:
-      "Explore plant geometry with full 3D point cloud rendering. Overlay spectral bands and indices directly onto plant structure for intuitive spatial analysis.",
+      "Drive a full capture without leaving the app. Auto backend picks ROS + gantry on the lab machine or RealSense-only on Windows, with UI-tunable velocity, end position, and FPS.",
     gradient: "from-green-500/20 to-emerald-500/10",
     border: "border-green-500/30",
     iconColor: "text-green-400",
   },
   {
-    icon: ScanLine,
-    title: "Hyperspectral Band Mapping",
+    icon: Cuboid,
+    title: "3D Reconstruction Pipeline",
     description:
-      "Process 400+ spectral bands with automated white/dark calibration. Compute NDVI, chlorophyll, moisture, and custom spectral indices from raw scan data.",
+      "Convert paired RGB + depth images into coloured Open3D point clouds, align successive frames with colour ICP (point-to-plane fallback), and merge them into a single model.",
     gradient: "from-lime-500/20 to-green-500/10",
     border: "border-lime-500/30",
     iconColor: "text-lime-400",
   },
   {
     icon: Microscope,
-    title: "Automated Trait Extraction",
+    title: "Data Quality Diagnostics",
     description:
-      "Run end-to-end trait extraction pipelines — from raw scan ingestion through background removal to structured, quantitative phenotypic output.",
+      "Quick Check (~15 random pairs) or Full Report over every consecutive pair — depth validity, median depth, ICP fitness, inlier RMSE, and rotation, with PASS/WARN/FAIL verdicts.",
     gradient: "from-emerald-500/20 to-teal-500/10",
     border: "border-emerald-500/30",
     iconColor: "text-emerald-400",
   },
   {
-    icon: BarChart3,
-    title: "Phenotype Correlation Engine",
+    icon: Scissors,
+    title: "Point-Cloud Cleanup",
     description:
-      "Correlate extracted spectral and structural traits with agronomic features or breeding targets. Identify meaningful genotype–environment interactions.",
+      "Clean large reconstructed PLY files with streaming voxel downsampling, HSV green filtering, largest-cluster isolation, statistical cleanup, and radius outlier removal.",
     gradient: "from-teal-500/20 to-cyan-500/10",
     border: "border-teal-500/30",
     iconColor: "text-teal-400",
   },
   {
-    icon: Sliders,
-    title: "Calibration Workflows",
+    icon: Ruler,
+    title: "3D Trait Extraction",
     description:
-      "Built-in white reference and dark current calibration pipelines ensure measurement accuracy and reproducibility across different scanning conditions.",
+      "Export bounding-box dimensions, convex-hull area and volume, max height, top-percentile heights, convex-hull PLY, JSON, and CSV outputs from cleaned plant point clouds.",
     gradient: "from-green-600/20 to-green-400/10",
     border: "border-green-600/30",
     iconColor: "text-green-300",
   },
   {
     icon: Download,
-    title: "Exportable Research Outputs",
+    title: "Batch Processing, Tests & Installers",
     description:
-      "Generate publication-ready tables, plots, and reports. Export processed data in standard formats compatible with common research and breeding workflows.",
+      "Batch cleanup/trait scripts, live merge snapshots, per-frame metrics, unit + smoke tests, CI/CD, and one-command installers for lab Linux and Windows.",
     gradient: "from-lime-600/20 to-lime-400/10",
     border: "border-lime-600/30",
     iconColor: "text-lime-300",
@@ -103,7 +103,7 @@ export default function Features() {
           >
             Everything You Need for{" "}
             <span className="bg-gradient-to-r from-green-400 to-lime-400 bg-clip-text text-transparent">
-              Plant Phenomics
+              3D Plant Reconstruction
             </span>
           </motion.h2>
           <motion.p
@@ -112,7 +112,7 @@ export default function Features() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-green-100/50 max-w-xl mx-auto text-base"
           >
-            A complete desktop analytics toolkit built for plant scientists and breeders.
+            A capture-to-model desktop toolkit built and tested for plant phenotyping workflows.
           </motion.p>
         </div>
 

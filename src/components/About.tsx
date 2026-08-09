@@ -5,10 +5,10 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { value: "400+", label: "Spectral Bands Processed", color: "text-green-400" },
-  { value: "3D", label: "Point Cloud Visualisation", color: "text-lime-400" },
-  { value: "10x", label: "Faster Trait Analysis", color: "text-emerald-400" },
-  { value: "100%", label: "Non-Destructive Scanning", color: "text-teal-400" },
+  { value: "RGB-D", label: "In-App Gantry & RealSense Capture", color: "text-green-400" },
+  { value: "ICP", label: "Colour ICP Frame Alignment & Merge", color: "text-lime-400" },
+  { value: "3D", label: "Trait Extraction: Hull Area, Volume & Height", color: "text-emerald-400" },
+  { value: "2.38M", label: "Points Preserved After Plant-Focused Cleanup", color: "text-teal-400" },
 ];
 
 export default function About() {
@@ -65,9 +65,9 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="text-green-100/60 leading-relaxed mb-8 text-base"
             >
-              By correlating structural geometry with spectral data, PhenoFusion3D accelerates
-              the development of improved crops for a changing climate — supporting food
-              security and more productive, sustainable farming systems.
+              The desktop app now drives capture, quality checking, reconstruction, post-processing,
+              and trait extraction. It can clean large PLY files, isolate plant-like green
+              regions, segment individual plants, and export 3D traits to JSON/CSV for validation.
             </motion.p>
 
             <motion.div
@@ -76,7 +76,7 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="flex flex-wrap gap-3"
             >
-              {["Food Security", "Sustainable Farming", "Crop Development", "Climate Resilience"].map((tag) => (
+              {["3D Reconstruction", "RGB-D Imaging", "Plant Phenotyping", "Trait Validation"].map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1.5 rounded-full border border-green-500/25 bg-green-500/10 text-green-300 text-sm font-medium"

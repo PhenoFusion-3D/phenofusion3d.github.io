@@ -5,35 +5,33 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PhenoFusion3D — Integrated 3D Hyperspectral Plant Analytics",
+  title: "PhenoFusion3D | RGB-D Plant Reconstruction and 3D Traits",
   description:
-    "PhenoFusion3D is an integrated 3D–hyperspectral analytics tool that extracts structural and spectral traits from plant scans, developed at the ANU node of the Australian Plant Phenomics Network.",
+    "PhenoFusion3D captures RGB-D plant data, reconstructs coloured 3D point clouds, cleans plant models, and extracts 3D traits for APPN phenotyping workflows.",
   keywords: [
     "plant phenomics",
-    "3D hyperspectral",
-    "plant science",
+    "RGB-D",
+    "3D reconstruction",
+    "point cloud",
+    "ICP",
+    "Open3D",
+    "RealSense L515",
+    "3D trait extraction",
+    "convex hull",
     "APPN",
     "ANU",
-    "plant breeding",
-    "trait extraction",
   ],
   openGraph: {
     title: "PhenoFusion3D",
-    description: "Integrated 3D–Hyperspectral Plant Analytics",
+    description: "RGB-D reconstruction, point-cloud cleanup, and 3D trait extraction for plant phenotyping",
     type: "website",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-[#050a0a] text-[#f0fdf4] antialiased`}>
-        {children}
-      </body>
+      <body className={`${inter.className} bg-[#050a0a] text-[#f0fdf4] antialiased`}>{children}</body>
     </html>
   );
 }

@@ -102,14 +102,14 @@ export default function Organisation() {
           </div>
 
           <div className="p-8 rounded-2xl border border-green-500/20 bg-gradient-to-br from-[#0f1f15] to-[#0a1510]">
-            <div className="text-green-400 font-bold text-xs uppercase tracking-widest mb-3">Project Goals</div>
-            <h3 className="text-white text-2xl font-bold mb-4">Intended Outcomes</h3>
+            <div className="text-green-400 font-bold text-xs uppercase tracking-widest mb-3">Project Progress</div>
+            <h3 className="text-white text-2xl font-bold mb-4">Delivered So Far</h3>
             <ul className="space-y-3">
               {[
-                "A usable desktop application for end-to-end plant scan processing",
-                "Interactive 3D visualisation with hyperspectral overlays",
-                "Exportable outputs (tables, plots, reports) for research workflows",
-                "Clear documentation and reproducible pipelines for future adoption",
+                "A desktop app driving capture, quality checking, reconstruction, cleanup, and trait extraction",
+                "RGB-D capture on the lab gantry (ROS) and directly from RealSense on Windows",
+                "ICP-based reconstruction with automatic rejection of low-quality frames",
+                "Quality reports, cleaned PLY outputs, trait JSON/CSV exports, tests, installers, and setup documentation",
               ].map((goal, i) => (
                 <motion.li
                   key={i}

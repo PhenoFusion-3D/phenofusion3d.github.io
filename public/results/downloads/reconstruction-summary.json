@@ -1,0 +1,16 @@
+{
+  "dataset": "C:\\Personal\\My_DEGREE's\\Master_of_Computing_(Advanced)\\Australian_National_University\\Technical Team Project - COMP8715\\PhenoFusion3D\\data\\main\\test_plant_20230809133659",
+  "rgb_dir": "C:\\Personal\\My_DEGREE's\\Master_of_Computing_(Advanced)\\Australian_National_University\\Technical Team Project - COMP8715\\PhenoFusion3D\\data\\main\\test_plant_20230809133659\\rgb",
+  "depth_dir": "C:\\Personal\\My_DEGREE's\\Master_of_Computing_(Advanced)\\Australian_National_University\\Technical Team Project - COMP8715\\PhenoFusion3D\\data\\main\\test_plant_20230809133659\\depth",
+  "output_ply": "C:\\Personal\\My_DEGREE's\\Master_of_Computing_(Advanced)\\Australian_National_University\\Technical Team Project - COMP8715\\PhenoFusion3D\\data\\main\\test_plant_20230809133659\\merge_simple_full\\merge_pcd_cam0.ply",
+  "frames_used": 598,
+  "succeeded": 577,
+  "failed": 21,
+  "points": 103615118,
+  "step_size": 1,
+  "depth_min_mm": 500,
+  "depth_trunc_m": 4.0,
+  "voxel_size_m": 0.01,
+  "use_tsdf": false,
+  "pipeline": "stakeholder_icp"
+}

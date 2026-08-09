@@ -1,0 +1,19 @@
+{
+  "input_ply": "data\\main\\test_plant_20230809133659\\plants\\plant_2.ply",
+  "traits_json": "data\\main\\test_plant_20230809133659\\traits\\plant_2\\traits.json",
+  "traits_csv": "data\\main\\test_plant_20230809133659\\traits\\plant_2\\traits.csv",
+  "convex_hull_ply": "data\\main\\test_plant_20230809133659\\traits\\plant_2\\convex_hull.ply",
+  "point_count": 300842,
+  "bbox_width_m": 0.9247483761233766,
+  "bbox_depth_m": 0.7000333692821181,
+  "bbox_height_m": 0.8085810745329585,
+  "bbox_volume_m3": 0.5234387762948983,
+  "convex_hull_area_m2": 1.926418022373843,
+  "convex_hull_volume_m3": 0.22088676569771135,
+  "height_max_m": 0.8085810745329585,
+  "height_top_1_pct_m": 0.7464484310178008,
+  "height_top_3_pct_m": 0.6718042733601435,
+  "height_top_5_pct_m": 0.5956811151081343,
+  "height_top_10_pct_m": 0.5104004107554612,
+  "height_top_13_pct_m": 0.48133633053027514
+}

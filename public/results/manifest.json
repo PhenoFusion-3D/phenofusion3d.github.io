@@ -1,0 +1,281 @@
+{
+  "dataset": "test_plant_20230809133659",
+  "pipeline": "stakeholder_icp",
+  "framesUsed": 598,
+  "framesSucceeded": 577,
+  "framesFailed": 21,
+  "rawPointCount": 103615118,
+  "cleanedPointCount": 2381707,
+  "downsampledPointCount": 2381707,
+  "greenFilteredPointCount": 75791785,
+  "voxelSizeM": 0.01,
+  "depthRangeMm": [
+    500,
+    4000
+  ],
+  "expectedPlants": 3,
+  "models": [
+    {
+      "id": "icp-full",
+      "label": "Full ICP reconstruction",
+      "description": "Raw stakeholder ICP output assembled from the complete RGB-D capture sequence.",
+      "file": "icp-full.bin",
+      "source": "data/main/test_plant_20230809133659/merge_simple_full/merge_pcd_cam0.ply",
+      "sourcePointCount": 103615118,
+      "sampledPointCount": 88922,
+      "boundsMetres": {
+        "min": [
+          -1.501091,
+          -5.895557,
+          1.200828
+        ],
+        "max": [
+          1.634097,
+          -0.020741,
+          3.885498
+        ],
+        "extent": [
+          3.135188,
+          5.874816,
+          2.68467
+        ]
+      },
+      "transform": {
+        "center": [
+          0.06650274,
+          -2.95814856,
+          2.54316323
+        ],
+        "scale": 5.874816093671407
+      }
+    },
+    {
+      "id": "post-cleanup",
+      "label": "Post-cleanup reconstruction",
+      "description": "HSV filtering, voxel downsampling, and component cleanup retain the plant geometry.",
+      "file": "post-cleanup.bin",
+      "source": "data/main/test_plant_20230809133659/post_cleanup/cleaned_plant.ply",
+      "sourcePointCount": 2381707,
+      "sampledPointCount": 88920,
+      "boundsMetres": {
+        "min": [
+          -1.478181,
+          -5.887905,
+          1.219715
+        ],
+        "max": [
+          0.647135,
+          -1.524001,
+          2.821025
+        ],
+        "extent": [
+          2.125315,
+          4.363904,
+          1.60131
+        ]
+      },
+      "transform": {
+        "center": [
+          -0.415523,
+          -3.70595319,
+          2.02036982
+        ],
+        "scale": 4.3639037542465555
+      }
+    },
+    {
+      "id": "plant-1",
+      "label": "Plant 1 + convex hull",
+      "description": "Segmented plant point cloud with its calculated convex-hull geometry.",
+      "file": "plant-1.bin",
+      "source": "data/main/test_plant_20230809133659/plants/plant_1.ply",
+      "sourcePointCount": 1883153,
+      "sampledPointCount": 64220,
+      "boundsMetres": {
+        "min": [
+          -1.480903,
+          -5.899261,
+          1.212655
+        ],
+        "max": [
+          0.657281,
+          -3.46248,
+          2.824596
+        ],
+        "extent": [
+          2.138184,
+          2.436781,
+          1.611941
+        ]
+      },
+      "transform": {
+        "center": [
+          -0.41181118,
+          -4.6808709,
+          2.01862503
+        ],
+        "scale": 2.4367810926726468
+      },
+      "hullFile": "plant-1-hull.json",
+      "traits": {
+        "pointCount": 1883153,
+        "widthM": 2.2441842126026876,
+        "depthM": 2.564999138370093,
+        "heightM": 2.1899216362073166,
+        "bboxVolumeM3": 12.605912864061018,
+        "hullAreaM2": 15.817485442441749,
+        "hullVolumeM3": 4.806707676450442,
+        "heightTop1PctM": 1.8096592073870004,
+        "heightTop3PctM": 1.6269455666303618,
+        "heightTop5PctM": 1.5526556098921707,
+        "heightTop10PctM": 1.4661562078956214,
+        "heightTop13PctM": 1.436393335270163
+      }
+    },
+    {
+      "id": "plant-2",
+      "label": "Plant 2 + convex hull",
+      "description": "Segmented plant point cloud with its calculated convex-hull geometry.",
+      "file": "plant-2.bin",
+      "source": "data/main/test_plant_20230809133659/plants/plant_2.ply",
+      "sourcePointCount": 300842,
+      "sampledPointCount": 64220,
+      "boundsMetres": {
+        "min": [
+          -0.667063,
+          -2.115026,
+          1.644089
+        ],
+        "max": [
+          0.187856,
+          -1.469591,
+          2.380151
+        ],
+        "extent": [
+          0.854919,
+          0.645435,
+          0.736062
+        ]
+      },
+      "transform": {
+        "center": [
+          -0.23960316,
+          -1.79230842,
+          2.01211971
+        ],
+        "scale": 0.8549193189384636
+      },
+      "hullFile": "plant-2-hull.json",
+      "traits": {
+        "pointCount": 300842,
+        "widthM": 0.9247483761233766,
+        "depthM": 0.7000333692821181,
+        "heightM": 0.8085810745329585,
+        "bboxVolumeM3": 0.5234387762948983,
+        "hullAreaM2": 1.926418022373843,
+        "hullVolumeM3": 0.22088676569771135,
+        "heightTop1PctM": 0.7464484310178008,
+        "heightTop3PctM": 0.6718042733601435,
+        "heightTop5PctM": 0.5956811151081343,
+        "heightTop10PctM": 0.5104004107554612,
+        "heightTop13PctM": 0.48133633053027514
+      }
+    },
+    {
+      "id": "plant-3",
+      "label": "Plant 3 + convex hull",
+      "description": "Segmented plant point cloud with its calculated convex-hull geometry.",
+      "file": "plant-3.bin",
+      "source": "data/main/test_plant_20230809133659/plants/plant_3.ply",
+      "sourcePointCount": 192761,
+      "sampledPointCount": 64220,
+      "boundsMetres": {
+        "min": [
+          -0.679505,
+          -2.917799,
+          1.730861
+        ],
+        "max": [
+          0.067645,
+          -2.330654,
+          2.38935
+        ],
+        "extent": [
+          0.74715,
+          0.587145,
+          0.658489
+        ]
+      },
+      "transform": {
+        "center": [
+          -0.3059303,
+          -2.62422673,
+          2.06010533
+        ],
+        "scale": 0.7471500118533224
+      },
+      "hullFile": "plant-3-hull.json",
+      "traits": {
+        "pointCount": 192761,
+        "widthM": 0.8234594395586446,
+        "depthM": 0.6680678623122489,
+        "heightM": 0.6963723557607222,
+        "bboxVolumeM3": 0.38309308696925154,
+        "hullAreaM2": 1.7811681066997933,
+        "hullVolumeM3": 0.2008512586092446,
+        "heightTop1PctM": 0.6589489440181209,
+        "heightTop3PctM": 0.6251764673033489,
+        "heightTop5PctM": 0.5798938782154501,
+        "heightTop10PctM": 0.5084002223677297,
+        "heightTop13PctM": 0.4833119331383602
+      }
+    }
+  ],
+  "traits": [
+    {
+      "plantId": 1,
+      "pointCount": 1883153,
+      "widthM": 2.2441842126026876,
+      "depthM": 2.564999138370093,
+      "heightM": 2.1899216362073166,
+      "bboxVolumeM3": 12.605912864061018,
+      "hullAreaM2": 15.817485442441749,
+      "hullVolumeM3": 4.806707676450442,
+      "heightTop1PctM": 1.8096592073870004,
+      "heightTop3PctM": 1.6269455666303618,
+      "heightTop5PctM": 1.5526556098921707,
+      "heightTop10PctM": 1.4661562078956214,
+      "heightTop13PctM": 1.436393335270163
+    },
+    {
+      "plantId": 2,
+      "pointCount": 300842,
+      "widthM": 0.9247483761233766,
+      "depthM": 0.7000333692821181,
+      "heightM": 0.8085810745329585,
+      "bboxVolumeM3": 0.5234387762948983,
+      "hullAreaM2": 1.926418022373843,
+      "hullVolumeM3": 0.22088676569771135,
+      "heightTop1PctM": 0.7464484310178008,
+      "heightTop3PctM": 0.6718042733601435,
+      "heightTop5PctM": 0.5956811151081343,
+      "heightTop10PctM": 0.5104004107554612,
+      "heightTop13PctM": 0.48133633053027514
+    },
+    {
+      "plantId": 3,
+      "pointCount": 192761,
+      "widthM": 0.8234594395586446,
+      "depthM": 0.6680678623122489,
+      "heightM": 0.6963723557607222,
+      "bboxVolumeM3": 0.38309308696925154,
+      "hullAreaM2": 1.7811681066997933,
+      "hullVolumeM3": 0.2008512586092446,
+      "heightTop1PctM": 0.6589489440181209,
+      "heightTop3PctM": 0.6251764673033489,
+      "heightTop5PctM": 0.5798938782154501,
+      "heightTop10PctM": 0.5084002223677297,
+      "heightTop13PctM": 0.4833119331383602
+    }
+  ]
+}

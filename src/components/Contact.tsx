@@ -81,11 +81,12 @@ export default function Contact() {
             {
               icon: Github,
               title: "Open Source",
-              detail: "Reproducible Pipelines",
-              sub: "Documentation & codebase",
+              detail: "PhenoFusion-3D/PhenoFusion3D",
+              sub: "MPL-2.0 codebase, docs & tests on GitHub",
               color: "text-emerald-400",
               bg: "bg-emerald-500/10",
               border: "border-emerald-500/30",
+              href: "https://github.com/PhenoFusion-3D/PhenoFusion3D",
             },
           ].map((card, i) => (
             <motion.div
