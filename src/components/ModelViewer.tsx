@@ -136,6 +136,9 @@ export default function ModelViewer() {
     scene.add(grid);
 
     const modelGroup = new THREE.Group();
+    // Legacy web assets map camera depth to display Y. Rotate the cloud and
+    // hull together so nearer foliage sits above the base; preserve distances.
+    modelGroup.rotation.x = Math.PI;
     scene.add(modelGroup);
 
     sceneRef.current = scene;

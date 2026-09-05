@@ -9,7 +9,7 @@ const navLinks = [
   { href: "#features", label: "Features" },
   { href: "#pipeline", label: "Pipeline" },
   { href: "#visualisation", label: "Visualisation" },
-  { href: "#results", label: "Results" },
+  { href: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/results/coleus-109/`, label: "Coleus 109" },
   { href: "#tech", label: "Technology" },
   { href: "#organisation", label: "Organisation" },
   { href: "#team", label: "Team" },
