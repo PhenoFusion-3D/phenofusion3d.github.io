@@ -1,0 +1,12 @@
+{
+  "points": 1143251,
+  "finite": true,
+  "support_length_matches": true,
+  "minimum_support_views": 3,
+  "upright_rigid_transform_verified": true,
+  "browser_verification": "Final model rendered; front/back presets, previous-result comparison and narrow-panel fitting checked in Codex browser",
+  "local_html_links_checked": 2,
+  "local_html_links_valid": true,
+  "focused_tests": "16 passed",
+  "scripts_compiled": 8
+}

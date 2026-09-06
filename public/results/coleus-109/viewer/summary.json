@@ -1,0 +1,65 @@
+{
+  "points": 1143251,
+  "extent_m": [
+    0.48547691946941346,
+    0.4088663384287004,
+    0.34124347714980424
+  ],
+  "frames": [
+    320,
+    360,
+    400,
+    440,
+    480,
+    520,
+    560,
+    600,
+    640,
+    680,
+    720,
+    760,
+    800,
+    840,
+    880,
+    920,
+    960,
+    1000,
+    1040,
+    1080
+  ],
+  "icp_accepted": 20,
+  "median_support_views": 7.0,
+  "minimum_support_views": 3,
+  "volume_points_before_crop": 3774866,
+  "voxel_m": 0.0006,
+  "truncation_m": 0.003,
+  "depth_source": "RGB multi-baseline stereo, joint bundle-adjusted camera poses, followed by colored ICP and TSDF fusion",
+  "status": "Candidate; visual and physical trait validation required",
+  "upright_transform": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      -1.0,
+      0.801
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "semantic_foreground_check": true
+}
