@@ -16,7 +16,7 @@ export default function ColeusRecovery() {
     <header className={section}>
       <Link href="/" className="text-sm text-lime-300 hover:underline">← PhenoFusion3D home</Link>
       <p className="mt-10 text-xs font-semibold uppercase tracking-widest text-lime-400">Reconstruction study · 6 September 2026 · Dataset 20260901122109</p>
-      <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">A clearer plant.<br />An honest view of the gaps.</h1>
+      <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">A clearer plant.<br />A view of the remaining gaps.</h1>
       <p className="mt-6 max-w-3xl text-lg leading-8 text-green-100/75">The recovered Coleus model reveals curved leaves and branch connections much more clearly. Explore the full result below, compare the earlier reconstruction, and see what a better capture needs to provide.</p>
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[['1,143,251', 'reconstructed points'], ['20', 'fused reference views'], ['3 minimum / 7 median', 'supporting camera views per point']].map(([value,label]) => <div key={label} className="rounded-xl border border-green-700/30 bg-green-950/30 p-5"><p className="text-2xl font-semibold text-lime-300">{value}</p><p className="mt-2 text-sm text-green-100/60">{label}</p></div>)}
@@ -30,7 +30,7 @@ export default function ColeusRecovery() {
       <iframe src={`${base}/index.html`} title="Original Coleus reconstruction comparison viewer" className="h-[950px] w-full rounded-xl border border-green-700/30 sm:h-[850px]" allowFullScreen />
     </section>
 
-    <section className={section}><h2 className={heading}>Why the earlier plant looked better</h2><div className={prose}>
+    <section className={section}><h2 className={heading}>The older plant's reconstruction was much better</h2><div className={prose}>
       <p>The older test plant ending in 659 and this capture were observed at very different distances. In representative frames, automatically selected coloured-leaf pixels had these depth distributions:</p>
       <div className="overflow-x-auto"><table className="w-full min-w-[450px] text-left text-sm"><thead><tr className="border-b border-green-800"><th className="py-3">Capture</th><th>5th percentile</th><th>Median</th><th>95th percentile</th></tr></thead><tbody><tr className="border-b border-green-900"><td className="py-3">Older plant …659</td><td>13.29 cm</td><td>16.88 cm</td><td>24.88 cm</td></tr><tr><td className="py-3">Coleus …109</td><td>42.06 cm</td><td>45.32 cm</td><td>66.43 cm</td></tr></tbody></table></div>
       <p>31.9% of the selected pixels in the new frame were beyond 50 cm. The <a className="text-lime-300 underline" href="https://www.realsenseai.com/products/stereo-depth-camera-d405/">D405 specification gives an ideal range of 7–50 cm</a>. This is consistent with poorer depth around lower foliage, but does not prove that range caused every error. These diagnostics assume 10,000 raw depth units per metre for both captures; they are not manually verified measurements.</p>
@@ -44,7 +44,7 @@ export default function ColeusRecovery() {
     </div></section>
 
     <section className={section}><h2 className={heading}>Why gaps remain in a 360° view</h2><div className={prose}>
-      <p>Being able to rotate a model through 360° does not mean the camera observed every side. An overhead trajectory cannot reveal every leaf underside, overlapping leaf or hidden branch. Repeating alignment cannot recover evidence that no image contains.</p>
+      <p>An overhead trajectory cannot reveal every leaf underside, overlapping leaf or hidden branch. Repeating alignment cannot recover evidence that no image contains.</p>
       <p>Some visible gaps may also come from difficult image texture, stereo matching or conservative filtering. We have not individually proven the cause of every missing patch. Filling every hole would make a visually closed model, but could invent geometry and bias leaf area or volume.</p>
       <p>All 20 ICP alignments were accepted, with 96.27–99.62% overlap and 0.891–1.361 mm residuals. Median image reprojection error was 0.236 pixels. These numbers describe internal agreement, not millimetre physical accuracy or complete coverage. Supporting views share imagery and are not statistically independent measurements. The 0.6 mm voxel spacing is a processing setting, not an accuracy claim.</p>
     </div></section>
